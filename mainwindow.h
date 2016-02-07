@@ -21,6 +21,7 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    ProfileManager *manager = new ProfileManager();
 };
 
 #endif // MAINWINDOW_H

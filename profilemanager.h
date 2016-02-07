@@ -2,7 +2,8 @@
 #define PROFILEMANAGER_H
 
 #include "profile.h"
-#include<vector>
+#include <vector>
+#include <QComboBox>
 
 using namespace std;
 
@@ -11,8 +12,7 @@ class ProfileManager
 public:
     ProfileManager();
     bool addProfile(Profile);
-
-private:
+    void refreshList(QComboBox*);
     vector<Profile> profiles;
 };
 

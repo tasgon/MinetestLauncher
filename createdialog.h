@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <QEventLoop>
 #include "profilemanager.h"
 
 namespace Ui {

@@ -16,6 +16,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::newProfile()
 {
-    CreateDialog *dialog = new CreateDialog();
-    dialog->show();
+    CreateDialog::newProfile(manager);
+    manager->refreshList(ui->comboBox);
+    qDebug() << "Manager size:" << manager->profiles.size();
 }

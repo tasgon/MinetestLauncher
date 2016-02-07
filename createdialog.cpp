@@ -36,5 +36,10 @@ void CreateDialog::loadVersionList(QNetworkReply *reply)
 
 void CreateDialog::newProfile(ProfileManager *manager)
 {
-    //Profile
+    CreateDialog dialog;
+    if (dialog.exec() != QDialog::Accepted)
+        return;
+
+    manager->addProfile(Profile(dialog.ui->nameBox->text(), dialog.ui->versionList->currentText()));
+    qDebug() << "Profile name:" << dialog.ui->nameBox->text() << ", version:" << dialog.ui->versionList->currentText() << "added.";
 }
