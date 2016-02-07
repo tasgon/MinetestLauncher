@@ -16,10 +16,13 @@ CONFIG += c++11
 SOURCES += main.cpp\
         mainwindow.cpp \
     profile.cpp \
-    profilemanager.cpp
+    profilemanager.cpp \
+    createdialog.cpp
 
 HEADERS  += mainwindow.h \
     profile.h \
-    profilemanager.h
+    profilemanager.h \
+    createdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    createdialog.ui

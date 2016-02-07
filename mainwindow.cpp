@@ -6,9 +6,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->createBtn, SIGNAL(clicked()), this, SLOT(newProfile()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::newProfile()
+{
+    CreateDialog *dialog = new CreateDialog();
+    dialog->show();
 }
