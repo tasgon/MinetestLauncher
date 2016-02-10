@@ -26,3 +26,6 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     createdialog.ui
+
+RESOURCES += \
+    scripts.qrc

@@ -48,13 +48,6 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="editBtn">
-              <property name="text">
-               <string>Edit</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QPushButton" name="deleteBtn">
               <property name="text">
                <string>Delete</string>
@@ -101,7 +94,7 @@
      <x>0</x>
      <y>0</y>
      <width>1099</width>
-     <height>30</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

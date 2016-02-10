@@ -16,8 +16,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-public slots:
+private slots:
     void newProfile();
+    void deleteSelected();
 
 private:
     Ui::MainWindow *ui;

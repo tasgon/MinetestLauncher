@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->createBtn, SIGNAL(clicked()), this, SLOT(newProfile()));
+    connect(ui->deleteBtn, SIGNAL(clicked()), this, SLOT(deleteSelected()));
 }
 
 MainWindow::~MainWindow()
@@ -18,5 +19,10 @@ void MainWindow::newProfile()
 {
     CreateDialog::newProfile(manager);
     manager->refreshList(ui->comboBox);
-    qDebug() << "Manager size:" << manager->profiles.size();
+}
+
+void MainWindow::deleteSelected()
+{
+    manager->deleteByName(ui->comboBox->currentText());
+    manager->refreshList(ui->comboBox);
 }
