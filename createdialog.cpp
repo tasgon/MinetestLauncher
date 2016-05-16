@@ -8,9 +8,8 @@ CreateDialog::CreateDialog(QWidget *parent) :
     ui->setupUi(this);
     connect(&nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadVersionList(QNetworkReply*)));
 
-    QUrl url("https://api.github.com/repos/minetest/minetest/releases");
-    qDebug() << "Url: " << url.toString();
-    QNetworkRequest request(url);
+    qDebug() << "Url: " << MINETEST_URL.toString();
+    QNetworkRequest request(MINETEST_URL);
     nam.get(request);
 
 }
@@ -22,16 +21,15 @@ CreateDialog::~CreateDialog()
 
 void CreateDialog::loadVersionList(QNetworkReply *reply)
 {
-    qDebug() << "Reply code: " << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    qDebug() << "Redirection url: " << reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toString();
     qDebug() << "Data size: " << reply->size();
     QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = document.array();
 
-    qDebug() << "Array size: " << array.size();
+    qDebug() << "Versions: " << array.size();
     for (int i = 0; i < array.size(); i++)
         ui->versionList->addItem(array.at(i).toObject().value("tag_name").toString());
     reply->deleteLater();
+    ui->buttonBox->setEnabled(true);
 }
 
 void CreateDialog::newProfile(ProfileManager *manager)
@@ -40,6 +38,6 @@ void CreateDialog::newProfile(ProfileManager *manager)
     if (dialog.exec() != QDialog::Accepted)
         return;
 
-    manager->addProfile(Profile(dialog.ui->nameBox->text(), dialog.ui->versionList->currentText()));
-    qDebug() << "Profile name:" << dialog.ui->nameBox->text() << ", version:" << dialog.ui->versionList->currentText() << "added.";
+    if (!manager->addProfile(Profile(dialog.ui->nameBox->text(), dialog.ui->versionList->currentText())))
+        QMessageBox::critical(0, "Error", "A profile with the same name already exists.");
 }

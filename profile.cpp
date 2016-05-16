@@ -11,7 +11,34 @@ Profile Profile::fromJson(QJsonObject obj)
     return Profile(obj.value("name").toString(), obj.value("version").toString());
 }
 
+QJsonObject Profile::toJson()
+{
+    QJsonObject object;
+    object["name"] = name;
+    object["version"] = version;
+    return object;
+}
+
 QDir Profile::getPath()
 {
     return QDir(prefix.filePath(name));
+}
+
+void Profile::play(QTabWidget *widget)
+{
+    QString cmd = "/bin/bash -c \"/home/myself/Code/C++/MinetestLauncher/scripts/linux.sh create %1 %2\"";
+    ProcessUi* process = new ProcessUi(widget, cmd.arg(name, version));
+    widget->addTab(process, name);
+    process->start();
+    widget->setCurrentIndex(widget->indexOf(process));
+}
+
+void Profile::build()
+{
+
+}
+
+void Profile::start()
+{
+
 }

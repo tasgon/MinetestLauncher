@@ -11,10 +11,13 @@ class ProfileManager
 {
 public:
     ProfileManager();
+    Profile getByName(QString);
     bool addProfile(Profile);
     bool deleteByName(QString);
     void refreshList(QComboBox*);
     vector<Profile> profiles;
+
+
 };
 
 #endif // PROFILEMANAGER_H

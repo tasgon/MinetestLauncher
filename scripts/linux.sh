@@ -50,21 +50,16 @@ install () {
 }
 
 case $1 in
-	help)
-		echo "list - list all current installed instances"
-		echo "create - create a new Minetest instance"
-		echo "play - play an instance"
-		;;
-	list)
-		ls -1 ~/.minetest/instances
-		;;
 	create)
 		VERSION=$3
 		libs
 		install
+                cd ..
+                ./bin/minetest
 		;;
 	play)
 		cd $TARGET
 		./bin/minetest
+		;;
 esac
 

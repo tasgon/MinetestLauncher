@@ -9,6 +9,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QEventLoop>
+#include <QMessageBox>
 #include "profilemanager.h"
 
 namespace Ui {
@@ -28,6 +29,8 @@ public:
 private:
     Ui::CreateDialog *ui;
     QNetworkAccessManager nam;
+
+    QUrl MINETEST_URL = QUrl("https://api.github.com/repos/minetest/minetest/releases");
 
 private slots:
     void loadVersionList(QNetworkReply*);

@@ -2,14 +2,20 @@
 
 ProfileManager::ProfileManager()
 {
+}
 
+Profile ProfileManager::getByName(QString name)
+{
+    for (Profile profile : profiles) {
+        if (profile.getName() == name) return profile;
+    }
 }
 
 bool ProfileManager::addProfile(Profile profile)
 {
-    for (Profile p : profiles)
-        if (p.getName() == profile.getName())
-            return false;
+    for (Profile p : profiles) {
+        if (p.getName() == profile.getName()) return false;
+    }
 
     profiles.push_back(profile);
     return true;
@@ -17,12 +23,13 @@ bool ProfileManager::addProfile(Profile profile)
 
 bool ProfileManager::deleteByName(QString name)
 {
-    for (int i = 0; i < profiles.size(); i++)
+    for (int i = 0; i < profiles.size(); i++) {
         if (profiles[i].getName() == name)
         {
             profiles.erase(profiles.begin() + i);
             return true;
         }
+    }
     return false;
 }
 

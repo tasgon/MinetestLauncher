@@ -19,6 +19,7 @@ public:
 private slots:
     void newProfile();
     void deleteSelected();
+    void playSelected();
 
 private:
     Ui::MainWindow *ui;

@@ -17,12 +17,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     profile.cpp \
     profilemanager.cpp \
-    createdialog.cpp
+    createdialog.cpp \
+    processui.cpp \
+    datamanager.cpp
 
 HEADERS  += mainwindow.h \
     profile.h \
     profilemanager.h \
-    createdialog.h
+    createdialog.h \
+    processui.h \
+    datamanager.h
 
 FORMS    += mainwindow.ui \
     createdialog.ui
