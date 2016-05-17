@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->playBtn, SIGNAL(clicked()), this, SLOT(playSelected()));
 
     dataManager->setManager(profileManager);
+    dataManager->loadProfiles();
+    profileManager->refreshList(ui->comboBox);
 }
 
 MainWindow::~MainWindow()

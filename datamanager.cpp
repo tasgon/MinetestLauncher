@@ -1,9 +1,10 @@
 #include "datamanager.h"
 
+#include <QDebug>
+
 DataManager::DataManager(QString filename)
 {
     file = new QFile(filename);
-    qDebug(file->fileName().toStdString().c_str());
     if (file->exists() && file->size() > 0) {
         file->open(QIODevice::ReadOnly);
         jsonObject = QJsonDocument::fromJson(file->readAll()).object();
@@ -17,10 +18,12 @@ DataManager::DataManager(QString filename)
 void DataManager::loadProfiles() {
     if (jsonObject["instances"].isArray()) {
         QJsonArray profileArray = jsonObject["instances"].toArray();
+        qDebug() << profileArray.size() << " profiles to be loaded.";
         for (int i = 0; i < profileArray.size(); i++) {
             manager->addProfile(Profile::fromJson(profileArray.at(i)));
         }
     }
+    qDebug() << manager->profiles.size() << "profiles loaded.";
 }
 
 void DataManager::saveProfiles()
@@ -28,6 +31,7 @@ void DataManager::saveProfiles()
     QJsonArray profileArray = QJsonArray();
     for (Profile profile : manager->profiles) {
         profileArray.append(profile.toJson());
+        qDebug() << profile.getName() << "saved.";
     }
     jsonObject["instances"] = profileArray;
 
