@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QFile>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -9,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->createBtn, SIGNAL(clicked()), this, SLOT(newProfile()));
     connect(ui->deleteBtn, SIGNAL(clicked()), this, SLOT(deleteSelected()));
     connect(ui->playBtn, SIGNAL(clicked()), this, SLOT(playSelected()));
+
+    dataManager->setManager(profileManager);
 }
 
 MainWindow::~MainWindow()
@@ -18,17 +22,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::newProfile()
 {
-    CreateDialog::newProfile(manager);
-    manager->refreshList(ui->comboBox);
+    CreateDialog::newProfile(profileManager);
+    profileManager->refreshList(ui->comboBox);
+    dataManager->saveProfiles();
 }
 
 void MainWindow::deleteSelected()
 {
-    manager->deleteByName(ui->comboBox->currentText());
-    manager->refreshList(ui->comboBox);
+    profileManager->deleteByName(ui->comboBox->currentText());
+    profileManager->refreshList(ui->comboBox);
+    dataManager->saveProfiles();
 }
 
 void MainWindow::playSelected()
 {
-    manager->getByName(ui->comboBox->currentText()).play(ui->tabWidget);
+    profileManager->getByName(ui->comboBox->currentText()).play(ui->tabWidget);
 }

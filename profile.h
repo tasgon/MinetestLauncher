@@ -13,7 +13,7 @@ class Profile
 {
 public:
     Profile(QString, QString);
-    static Profile fromJson(QJsonObject);
+    static Profile fromJson(QJsonValue);
     QJsonObject toJson();
     QDir getPath();
 

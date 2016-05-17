@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFile>
+#include <QDir>
 #include "createdialog.h"
+#include "datamanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,7 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    ProfileManager *manager = new ProfileManager();
+    DataManager *dataManager = new DataManager(QDir::homePath() + "/.minetest/minetestlauncher.conf");
+    ProfileManager *profileManager = new ProfileManager();
 };
 
 #endif // MAINWINDOW_H

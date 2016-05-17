@@ -6,16 +6,17 @@ Profile::Profile(QString n, QString v)
     version = v;
 }
 
-Profile Profile::fromJson(QJsonObject obj)
+Profile Profile::fromJson(QJsonValue val)
 {
+    QJsonObject obj = val.toObject();
     return Profile(obj.value("name").toString(), obj.value("version").toString());
 }
 
 QJsonObject Profile::toJson()
 {
     QJsonObject object;
-    object["name"] = name;
-    object["version"] = version;
+    object.insert("name", name);
+    object.insert("version", version);
     return object;
 }
 
