@@ -36,7 +36,9 @@ void Profile::play(QTabWidget *widget)
 
 void Profile::build()
 {
-
+#ifdef _WIN32
+#else
+#endif
 }
 
 void Profile::start()

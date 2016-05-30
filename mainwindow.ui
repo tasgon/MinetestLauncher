@@ -34,21 +34,18 @@
         <attribute name="title">
          <string>Main</string>
         </attribute>
-        <widget class="QWebView" name="webView">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>765</width>
-           <height>360</height>
-          </rect>
-         </property>
-         <property name="url">
-          <url>
-           <string>http://dev.minetest.net/index.php?title=Changelog&amp;printable=yes#0.4.12_.E2.86.92_0.4.13</string>
-          </url>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="greetingText">
+           <property name="text">
+            <string>Welcome to the Minetest Launcher!</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="horizontalLayoutWidget">
@@ -118,7 +115,7 @@
      <x>0</x>
      <y>0</y>
      <width>783</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -133,13 +130,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKitWidgets/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

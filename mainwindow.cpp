@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QFile>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,6 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->createBtn, SIGNAL(clicked()), this, SLOT(newProfile()));
     connect(ui->deleteBtn, SIGNAL(clicked()), this, SLOT(deleteSelected()));
     connect(ui->playBtn, SIGNAL(clicked()), this, SLOT(playSelected()));
+
+    QFont font;
+    font.setPointSize(32);
+    ui->greetingText->setFont(font);
 
     dataManager->setManager(profileManager);
     dataManager->loadProfiles();
