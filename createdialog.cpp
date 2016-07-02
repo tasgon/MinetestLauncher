@@ -6,6 +6,7 @@ CreateDialog::CreateDialog(QWidget *parent) :
     ui(new Ui::CreateDialog)
 {
     ui->setupUi(this);
+    ui->statusLayout->setContentsMargins(0, w0, 0, 0);
     connect(&nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadVersionList(QNetworkReply*)));
 
     qDebug() << "Url: " << MINETEST_URL.toString();
